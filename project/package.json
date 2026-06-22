@@ -1,0 +1,24 @@
+{
+  "name": "student-microservices",
+  "version": "1.0.0",
+  "description": "Microservices architecture with REST, GraphQL, gRPC and Kafka",
+  "main": "index.js",
+  "scripts": {
+    "gateway": "node gateway/apiGateway.js",
+    "students": "node student-service/server.js",
+    "courses": "node course-service/server.js",
+    "enrollments": "node enrollment-service/server.js",
+    "consumer": "node kafka/consumer.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "@as-integrations/express4": "^1.1.2",
+    "@grpc/grpc-js": "^1.10.9",
+    "@grpc/proto-loader": "^0.7.13",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "graphql": "^16.9.0",
+    "kafkajs": "^2.2.4",
+    "sqlite3": "^5.1.7"
+  }
+}

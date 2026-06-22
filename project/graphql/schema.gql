@@ -1,0 +1,42 @@
+type Student {
+  id: ID
+  name: String
+  email: String
+}
+
+type Course {
+  id: ID
+  title: String
+  description: String
+}
+
+type Enrollment {
+  id: ID
+  studentId: String
+  courseId: String
+}
+
+type DeleteResult {
+  success: Boolean
+}
+
+type Query {
+  student(id: ID!): Student
+  students: [Student]
+  course(id: ID!): Course
+  courses: [Course]
+  enrollments: [Enrollment]
+}
+
+type Mutation {
+  createStudent(name: String!, email: String!): Student
+  updateStudent(id: ID!, name: String!, email: String!): Student
+  deleteStudent(id: ID!): DeleteResult
+
+  createCourse(title: String!, description: String!): Course
+  updateCourse(id: ID!, title: String!, description: String!): Course
+  deleteCourse(id: ID!): DeleteResult
+
+  enroll(studentId: String!, courseId: String!): Enrollment
+  deleteEnrollment(id: ID!): DeleteResult
+}

@@ -1,0 +1,316 @@
+{
+  "info": {
+    "name": "Student Microservices API",
+    "description": "REST + GraphQL tests for the Student Platform microservices project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Students — REST",
+      "item": [
+        {
+          "name": "GET all students",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/students"
+          }
+        },
+        {
+          "name": "GET student by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/students/1"
+          }
+        },
+        {
+          "name": "POST create student",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/students",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Martin\",\n  \"email\": \"alice@example.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT update student",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/students/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Updated\",\n  \"email\": \"alice.updated@example.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE student",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/students/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses — REST",
+      "item": [
+        {
+          "name": "GET all courses",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/courses"
+          }
+        },
+        {
+          "name": "GET course by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/courses/1"
+          }
+        },
+        {
+          "name": "POST create course",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/courses",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Node.js Microservices\",\n  \"description\": \"Build scalable microservices with Node.js\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT update course",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/courses/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Advanced Node.js\",\n  \"description\": \"Deep dive into Node.js internals\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE course",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/courses/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enrollments — REST",
+      "item": [
+        {
+          "name": "GET all enrollments",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/enrollments"
+          }
+        },
+        {
+          "name": "GET enrollment by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/enrollments/1719000000000"
+          }
+        },
+        {
+          "name": "POST enroll student in course",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/enroll",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studentId\": \"1\",\n  \"courseId\": \"1\"\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE enrollment",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/enrollments/1719000000000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "GraphQL — Queries",
+      "item": [
+        {
+          "name": "Query — all students",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ students { id name email } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Query — student by ID",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ student(id: \\\"1\\\") { id name email } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Query — all courses",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ courses { id title description } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Query — course by ID",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ course(id: \\\"1\\\") { id title description } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Query — all enrollments",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"{ enrollments { id studentId courseId } }\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GraphQL — Mutations",
+      "item": [
+        {
+          "name": "Mutation — createStudent",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { createStudent(name: \\\"Bob\\\", email: \\\"bob@example.com\\\") { id name email } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — updateStudent",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { updateStudent(id: \\\"1\\\", name: \\\"Bob Updated\\\", email: \\\"bob2@example.com\\\") { id name email } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — deleteStudent",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteStudent(id: \\\"1\\\") { success } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — createCourse",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { createCourse(title: \\\"GraphQL Mastery\\\", description: \\\"Learn GraphQL from scratch\\\") { id title } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — updateCourse",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { updateCourse(id: \\\"1\\\", title: \\\"GraphQL Pro\\\", description: \\\"Advanced GraphQL\\\") { id title } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — deleteCourse",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteCourse(id: \\\"1\\\") { success } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — enroll",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { enroll(studentId: \\\"1\\\", courseId: \\\"1\\\") { id studentId courseId } }\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mutation — deleteEnrollment",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/graphql",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation { deleteEnrollment(id: \\\"1719000000000\\\") { success } }\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

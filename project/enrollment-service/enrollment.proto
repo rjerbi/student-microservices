@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package enrollment;
+
+message Enrollment {
+  string id = 1;
+  string studentId = 2;
+  string courseId = 3;
+}
+
+message GetEnrollmentRequest {
+  string enrollment_id = 1;
+}
+
+message GetEnrollmentResponse {
+  Enrollment enrollment = 1;
+}
+
+message DeleteEnrollmentRequest {
+  string enrollment_id = 1;
+}
+
+message DeleteEnrollmentResponse {
+  bool success = 1;
+}
+
+message CreateEnrollmentRequest {
+  string studentId = 1;
+  string courseId = 2;
+}
+
+message CreateEnrollmentResponse {
+  Enrollment enrollment = 1;
+}
+
+message Empty {}
+
+message EnrollmentsResponse {
+  repeated Enrollment enrollments = 1;
+}
+
+service EnrollmentService {
+  rpc GetEnrollment(GetEnrollmentRequest) returns (GetEnrollmentResponse);
+  rpc GetEnrollments(Empty) returns (EnrollmentsResponse);
+  rpc CreateEnrollment(CreateEnrollmentRequest) returns (CreateEnrollmentResponse);
+  rpc DeleteEnrollment(DeleteEnrollmentRequest) returns (DeleteEnrollmentResponse);
+}
