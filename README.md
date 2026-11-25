@@ -1,4 +1,4 @@
-# Student Platform — Microservices Architecture (Dockerized)
+# Student Platform — Microservices Architecture
 
 REST + GraphQL + gRPC + Kafka, all orchestrated with a single `docker-compose.yml`.
 
